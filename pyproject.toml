@@ -30,7 +30,7 @@ multi_line_output = 3
 lines_after_imports = 2
 include_trailing_comma = true
 
-[[tool.mypy.overrides]]
+[tool.mypy]
 warn_redundant_casts = true
 warn_unused_ignores = true
 disallow_any_generics = true
