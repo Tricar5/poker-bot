@@ -1,9 +1,13 @@
 import asyncio
-from bot.app import dp, bot
+
+from bot.app import (
+    bot,
+    dp,
+)
 
 
 # Запуск процесса поллинга новых апдейтов
-async def main():
+async def main() -> None:
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 

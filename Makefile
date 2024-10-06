@@ -44,8 +44,7 @@ run:
 
 lint:
 	mypy ./bot
-	isort ./bot
-	ruff check ./bot --fix
+	ruff check --config ruff.toml ./bot --fix
 
 
 # DOCKER
