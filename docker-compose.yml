@@ -1,0 +1,18 @@
+version: "3.0"
+name: "poker-bot"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgres
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    networks: ["poker-bot"]
+
+
+networks:
+  poker-bot:
+    name: poker-bot
+    driver: bridge

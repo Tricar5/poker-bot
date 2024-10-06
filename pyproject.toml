@@ -1,0 +1,73 @@
+[project]
+name = "poker_bot"
+version = "0.1.0"
+description = "Scoring bot for home using"
+authors = [
+    {name = "a.kazachinskiy", email = "kazachinskii.a@gmail.com"},
+]
+dependencies = [
+    "aiogram>=3.13.1",
+    "asyncpg>=0.29.0",
+    "pydantic>=2.9.2",
+    "pydantic-settings>=2.5.2",
+    "python-dotenv>=1.0.1",
+    "sqlalchemy>=2.0.35",
+    "alembic>=1.13.3",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.pdm]
+distribution = true
+
+
+[toll.isort]
+line_length=90
+force_grid_wrap=2
+multi_line_output=3
+lines_after_imports=2
+include_trailing_comma=true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.6.9",
+    "isort>=5.13.2",
+    "mypy>=1.11.2",
+]
+
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "W191",  # indentation contains tabs
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff]
+exclude= [".venv", "pok-bot.ipynb"]
+
+[tool.ruff.lint.isort]
+known-third-party = ["pydantic", "aiogram"]
+
+[tool.ruff.lint.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
